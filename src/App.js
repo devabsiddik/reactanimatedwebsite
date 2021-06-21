@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
+import Home from './pages/Home';
+import About from './pages/About';
+import Service from './pages/Services';
+import Contact from './pages/Contact';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+const App = () => {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    // <> </> this is called react fragment;
+
+    return (
+        <>
+
+            <BrowserRouter>
+                <Navbar />
+                <Switch>
+                    <Route exact path="/" component={Home}></Route>
+                    <Route exact path="/service" component={Service}></Route>
+                    <Route exact path="/about" component={About}></Route>
+                    <Route exact path="/contact" component={Contact}></Route>
+                    <Redirect to="/" />
+                </Switch>
+                <Footer />
+            </BrowserRouter>
+
+        </>
+    );
+};
 
 export default App;
